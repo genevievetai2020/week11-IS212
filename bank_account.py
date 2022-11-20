@@ -13,26 +13,27 @@ class BankAccount:
     def deposit(self, amount):
         self.balance += amount
         # recording the time of transaction for future implementation of reporting feature
-        now = datetime.now()
-        print("now =", now)
-        # dd/mm/YY H:M:S
-        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+        dt_string = self.get_time()
         print("Transaction:", amount, "-", dt_string)	
-
-
 
     def withdraw(self, amount):
         if self.balance >= amount:
             self.balance -= amount
             # recording the time of transaction for future implementation of reporting feature
-            now = datetime.now()
-            print("now =", now)
-            # dd/mm/YY H:M:S
-            dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+            dt_string = self.get_time()
             print("Transaction:", amount, "-", dt_string)
 
         #TODO: Write code to handle the insufficient balance case here
+        else:
+            raise Exception ("Insufficient balance")
 
     def interest(self, rate_computer):
         return rate_computer.get_rate() * self.balance
+
+    def get_time():
+        now = datetime.now()
+        print("now =", now)
+        # dd/mm/YY H:M:S
+        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+        return dt_string
 
