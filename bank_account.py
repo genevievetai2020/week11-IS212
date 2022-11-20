@@ -30,7 +30,7 @@ class BankAccount:
     def interest(self, rate_computer):
         return rate_computer.get_rate() * self.balance
 
-    def get_time():
+    def get_time(self):
         now = datetime.now()
         print("now =", now)
         # dd/mm/YY H:M:S
